@@ -23,7 +23,8 @@ public class UserDaoImpl implements UserDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
+
+    @Override
     public User createUser(final User user) {
         final String sql = "insert into sys_user(organization_id, username, password, salt, role_ids, locked) values(?,?,?,?,?,?)";
 
@@ -47,6 +48,7 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
+    @Override
     public User updateUser(User user) {
         String sql = "update sys_user set organization_id=?,username=?, password=?, salt=?, role_ids=?, locked=? where id=?";
         jdbcTemplate.update(
@@ -55,6 +57,7 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
+    @Override
     public void deleteUser(Long userId) {
         String sql = "delete from sys_user where id=?";
         jdbcTemplate.update(sql, userId);

@@ -22,7 +22,8 @@ import java.util.List;
 public class ResourceDaoImpl implements ResourceDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
+
+    @Override
     public Resource createResource(final Resource resource) {
         final String sql = "insert into sys_resource(name, type, url, permission, parent_id, parent_ids, available) values(?,?,?,?,?,?,?)";
 
@@ -55,6 +56,7 @@ public class ResourceDaoImpl implements ResourceDao {
         return resource;
     }
 
+    @Override
     public void deleteResource(Long resourceId) {
         Resource resource = findOne(resourceId);
         final String deleteSelfSql = "delete from sys_resource where id=?";

@@ -23,7 +23,8 @@ public class RoleDaoImpl implements RoleDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
+
+    @Override
     public Role createRole(final Role role) {
         final String sql = "insert into sys_role(role, description, resource_ids, available) values(?,?,?,?)";
 
@@ -53,6 +54,7 @@ public class RoleDaoImpl implements RoleDao {
         return role;
     }
 
+    @Override
     public void deleteRole(Long roleId) {
         final String sql = "delete from sys_role where id=?";
         jdbcTemplate.update(sql, roleId);

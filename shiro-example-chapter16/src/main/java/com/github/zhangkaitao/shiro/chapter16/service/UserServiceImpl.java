@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
      * 创建用户
      * @param user
      */
+    @Override
     public User createUser(User user) {
         //加密密码
         passwordHelper.encryptPassword(user);
@@ -48,6 +49,7 @@ public class UserServiceImpl implements UserService {
      * @param userId
      * @param newPassword
      */
+    @Override
     public void changePassword(Long userId, String newPassword) {
         User user =userDao.findOne(userId);
         user.setPassword(newPassword);
@@ -79,6 +81,7 @@ public class UserServiceImpl implements UserService {
      * @param username
      * @return
      */
+    @Override
     public Set<String> findRoles(String username) {
         User user =findByUsername(username);
         if(user == null) {
@@ -92,6 +95,7 @@ public class UserServiceImpl implements UserService {
      * @param username
      * @return
      */
+    @Override
     public Set<String> findPermissions(String username) {
         User user =findByUsername(username);
         if(user == null) {

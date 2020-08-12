@@ -23,14 +23,17 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private ResourceService resourceService;
 
+    @Override
     public Role createRole(Role role) {
         return roleDao.createRole(role);
     }
 
+    @Override
     public Role updateRole(Role role) {
         return roleDao.updateRole(role);
     }
 
+    @Override
     public void deleteRole(Long roleId) {
         roleDao.deleteRole(roleId);
     }

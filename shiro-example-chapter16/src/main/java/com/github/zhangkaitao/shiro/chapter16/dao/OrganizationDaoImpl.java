@@ -24,6 +24,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Override
     public Organization createOrganization(final Organization organization) {
         final String sql = "insert into sys_organization( name, parent_id, parent_ids, available) values(?,?,?,?)";
 
@@ -53,6 +54,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
         return organization;
     }
 
+    @Override
     public void deleteOrganization(Long organizationId) {
         Organization organization = findOne(organizationId);
         final String deleteSelfSql = "delete from sys_organization where id=?";
